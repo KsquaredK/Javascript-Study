@@ -1,3 +1,12 @@
+/* =====***** CODEACADEMY PROJECTS *****=====
+1.) Temp Calculator
+2.) Your Age in Dog Years
+3.) Magic Eightball (if/else & switch case)
+4.) Race Day
+5.) Rock Scissors Paper
+6.) Sleep Debt Calculator
+
+
 /* TEMP CALCULATOR - Kelvin/Celsius/Fahrenheit/Newton  */
 
 //the value of kelvin will remain constant
@@ -39,17 +48,21 @@ console.log(`My name is ${myName}. I am ${myAge} years old in human years, which
 let userName = 'Prue'
 let userQuestion = "Will I get everything I dream of?"
 
+// log prompt with userName using string interpolation
 if (userName !== '') {
   console.log(`Hello, ${userName}! ${userName} asks, "${userQuestion}"`)
 }
+// if no userName given, log anonymous prompt
 else {
   console.log(`Hello! Our guest asks, "${userQuestion}"`)
 }
 
  let  eightBall = '';
+//  generate random number between 0-7
   let randomNumber = Math.floor(Math.random() * 8);
-
+// execute switch case for 8 possible responses
  switch (randomNumber) {
+  //  use backticks so response will log string
    case 0: eightBall = `It is certain`
    break;
    
@@ -77,7 +90,9 @@ else {
    default: console.log(`I dunno...`)
 
 }
+// log the variable eightBall with the value assigned in the switch case
    console.log(eightBall, "\n")
+
 
    /*  Magic 8-Ball - else if  */
 //    let userName = 'Prue'
@@ -134,19 +149,21 @@ else {
 
   // randomly assigns a number < 1000
 let raceNumber = Math.floor(Math.random() * 1000);
+// randomly assign a number < 102
 let runnerAge = Math.floor(Math.random() * 102);
 
-// assign variables for runners' ages and race times
+// assign variables for runners' ages and race times; change this for different outputs
 let earlyRegistrant = true;
 
-// generate random race numbers > 1000 for early race registrants
+// generate random race numbers > 1000 for early race registrants over 18
 if (earlyRegistrant == true && runnerAge > 18) {
+  // add 1000 to raceNumber
   raceNumber = raceNumber + 1000;
 
 // Log race time and race number for early registrants
   console.log(`Your race number is ${raceNumber}, and your start time is 9:30 am.`, "\n")
 
-// 
+// Log race time and numbers for all registrants
 } else if
 (earlyRegistrant !== true && runnerAge > 18) {
   console.log(`Your race number is ${raceNumber} and your start time is 11 am.`, "\n")
@@ -161,16 +178,21 @@ if (runnerAge == 18) {
 }
 
 //  ====*** ROCK SCISSORS PAPER GAME featuring cheatcode option
+// first function: handle and return user input
 const getUserChoice = userInput => {
+  // handle user input of any case
   userInput = userInput.toLowerCase();
+  // when input matches criteria, return
     if (userInput === "rock" || userInput === "paper" || userInput === "scissors" || userInput ==="bomb") {
           return userInput;
     } 
   }
   
-  
+  // second function: generate computer choice for game
   const getComputerChoice = () => {
+    // generate random number between zero-2
     const randomNumber = Math.floor(Math.random() * 3);
+    // return string that corresponds to randomNumber
     switch (randomNumber) {
       case 0: 
       return "rock";
@@ -183,18 +205,22 @@ const getUserChoice = userInput => {
       case 2: 
       return "paper";
       break;
-  
+  // adding a default is best practice when switch case breaks
       default: console.log(`That's weird...I got nuthin'. Guess you win! Want to play again?`)
     }
   }
   
+  // third function: compare userChoice and computerChoice to determine winner, log result
   const determineWinner = (userChoice, computerChoice) => {
+    // easter egg choice
     if (userChoice === "bomb") {
     return `YOU WIN!!! YOU WIN!!! OMFG!!!", \n"`;
       }
+      // cf user input and computer: if they're the same, log tie game
     if (userChoice === computerChoice) {
     return `Tie game! Everybody wins!`, "\n";
     }
+    // cf user input & computer for other outcomes if choice is "rock"
     if (userChoice === "rock") {
       if (computerChoice === "paper") {
       return `Rock? I don't see any rock...YOU LOSE!`, "\n";
@@ -203,7 +229,7 @@ const getUserChoice = userInput => {
       return `Smashy-smash! Rock wins!!`, "\n";
     }
     }
-  
+    // cf user input & computer for other outcomes if choice is "paper"
     if (userChoice === "paper") {
       if (computerChoice === "scissors") {
         return `Ouchy, you got shredded...YOU LOSE!`, "\n";
@@ -212,7 +238,7 @@ const getUserChoice = userInput => {
         return `Buh-BYE, rock. Paper wins!!`, "\n";
       }
     }
-  
+    // cf user input & computer for other outcomes if choice is "scissors"
     if (userChoice === "scissors") {
       if (computerChoice === "rock") {
         return `Beware of falling boulders, Mr. Snippy...YOU LOSE!`, "\n";
@@ -221,11 +247,13 @@ const getUserChoice = userInput => {
         return `Snip. Snip. Snip...Scissors win!!`, "\n";
       }
     }
+    // after exhausting if statements above, use else to address input outside of game parameters
     else {
-      return console.log(" You just had one job.","\n","One job and three little old words to choose from: rock, paper, or scissors.", "\n","Try again, genius.", "\n");
+      return console.log("You just had one job.","\n","One job and three little old words to choose from: rock, paper, or scissors.", "\n","Try again, genius.", "\n");
       }
   }
   
+  // fourth function: play game by taking user input and executing sequence of functions above
   const playGame = () => {
     const userChoice = getUserChoice("bip");
     console.log(`You threw: ${userChoice}`);
@@ -233,8 +261,11 @@ const getUserChoice = userInput => {
     console.log(`The computer threw: ${computerChoice}`,"\n","And the winner is: ", "\n");
     console.log(determineWinner(userChoice, computerChoice));
     };
-    
+    // invoke playGame() to execute above logic
   playGame();
+
+
+  //  ===*** Sleep Debt Calculator  ***===
   
   
   

@@ -1,3 +1,8 @@
+/* =====***** CODEACADEMY CHALLENGES - JAVASCRIPT *****=====
+1.) Print Even Numbers
+2.) Generate Multiplication Table
+3.)
+
 /* ===*** Print Even Numbers 0-10 */
 
 // let i = 0;
