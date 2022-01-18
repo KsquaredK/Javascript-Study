@@ -266,6 +266,78 @@ const getUserChoice = userInput => {
 
 
   //  ===*** Sleep Debt Calculator  ***===
+  const getSleepHours = day => {
+    switch (day) {
+      case "monday": return 8
+      break;
+  
+      case "tuesday": return 8
+      break;
+  
+      case "wednesday": return 8
+      break;
+  
+      case "thursday": return 8
+      break;
+  
+      case "friday": return 8
+      break;
+  
+      case "saturday": return 8
+      break;
+  
+      case "sunday": return 8
+      break;
+  
+     default: console.log(`dataset incomplete`)
+    }
+  }
+  
+  // console.log(getSleepHours("friday"))
+
+  const getActualSleepHours = () => 
+    //  getSleepHours("monday") +
+    //  getSleepHours("tuesday") +
+    //  getSleepHours("wednesday") +
+    //  getSleepHours("thursday") +
+    //  getSleepHours("friday") +
+    //  getSleepHours("saturday") +
+    //  getSleepHours("sunday")
+8 + 8 + 4 + 8 + 6 + 6 + 9
+  
+  // console.log(getActualSleepHours())
+
+const getIdealSleepHours = idealHours => 
+  // const idealHours = 8;
+  idealHours * 7;
+
+// console.log(getIdealSleepHours())
+
+const calculateSleepDebt = () => {
+  let actualSleepHours = getActualSleepHours();
+  let idealSleepHours = getIdealSleepHours(8);
+  if (idealSleepHours === actualSleepHours) {
+    console.log(`Perfection in your sleep patterns! Your actual and ideal sleep are the same.`)
+  }
+else if (idealSleepHours > actualSleepHours) {
+  let debt = idealSleepHours - actualSleepHours
+  console.log(`Get your butt to bed tonight, sleepyhead! You have a sleep debt of ${debt} hour(s).`)
+}
+else {
+  let surplus = actualSleepHours - idealSleepHours
+  console.log(`Sackhound! You have a sleep surplus of ${surplus} hour(s)`)
+}
+}
+calculateSleepDebt()
+  
+  
+
+  
+
+  
+  
+  
+  
   
   
   
