@@ -7,6 +7,7 @@
 6.) Sleep Debt Calculator
 7.) Training Day (troubleshoot scope errors)
 8.) Whale Talk (nested arrays)
+9.) Simple Linting Tool (working with arrays)
 
 
 /* TEMP CALCULATOR - Kelvin/Celsius/Fahrenheit/Newton  */
@@ -405,6 +406,74 @@ for (i = 0; i < input.length; i++) {
 }
 console.log(resultArr.join('').toUpperCase())
   
+
+// ===*** Simple Linting Tool - working with arrays ***===
+let story = 'Last weekend, I took literally the most beautiful bike ride of my life. The route is called "The 9W to Nyack" and it actually stretches all the way from Riverside Park in Manhattan to South Nyack, New Jersey. It\'s really an adventure from beginning to end! It is a 48 mile loop and it basically took me an entire day. I stopped at Riverbank State Park to take some extremely artsy photos. It was a short stop, though, because I had a really long way left to go. After a quick photo op at the very popular Little Red Lighthouse, I began my trek across the George Washington Bridge into New Jersey.  The GW is actually very long - 4,760 feet! I was already very tired by the time I got to the other side.  An hour later, I reached Greenbrook Nature Sanctuary, an extremely beautiful park along the coast of the Hudson.  Something that was very surprising to me was that near the end of the route you actually cross back into New York! At this point, you are very close to the end.';
+
+let overusedWords = ['really', 'very', 'basically'];
+
+let unnecessaryWords = ['extremely', 'literally', 'actually' ];
+
+// convert string to array of substrings
+let storyWords = story.split(' ')
+//filter array 
+let betterWords = 
+storyWords.filter(function(word) {
+  // and return words not in 2nd array
+  return !unnecessaryWords.includes(word)
+})
+
+console.log(betterWords, betterWords.length, "length of storyWords array: ", storyWords.length)
+
+// example: comparing two arrays for duplicates
+// log instances of overrusedWords elements occurring in storyWords
+// iterate and generate new array using filter
+let tired = storyWords.filter(function(word) {
+  // return words that match elements in second array
+  return overusedWords.includes(word)
+})
+console.log(`You have used these tired words ${tired.length} times in your story: ${tired}`)
+/* Output: 
+You have used these tired words 8 times in your story: really,basically,really,very,very,very,very,very
+9 */
+
+// find the number of sentences in the story
+let sentenceCount = 0;
+// iterate each word checking condition
+betterWords.forEach(word => {
+  // if the character in the last index of a word is either puctuation mark
+  if (word[word.length-1] === '.' || word [word.length-1] === '1') {
+    // increment 1 the value of sentenceCount
+    sentenceCount += 1;
+    } 
+});
+console.log(sentenceCount);
+// expected output: 9
+
+// write function to log results
+const lintingTotals = () => {
+  console.log("Here are your total counts:", "\n", "word count - ", betterWords.length, "\n", "sentence count - ", sentenceCount, "\n", "times you chose overused words - ", tired.length)
+}
+lintingTotals();
+/* output: Here are your total counts: 
+ word count -  182 
+ sentence count -  9 
+ times you chose overused words -  8 
+ */
+
+ // log array betterWords as single string
+console.log(betterWords.join(" "))
+
+//  additional challenges:
+/* 
+
+    • For the overused words, remove it every other time it appears.
+
+    • Write a function that finds the word that appears the greatest number of times.
+
+    • Replaced overused words with something else.
+*/
+
 
   
 
