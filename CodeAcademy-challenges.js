@@ -37,4 +37,3 @@ let product = "•  ";
 
     console.log(product);
 
-

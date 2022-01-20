@@ -5,6 +5,8 @@
 4.) Race Day
 5.) Rock Scissors Paper
 6.) Sleep Debt Calculator
+7.) Training Day (troubleshoot scope errors)
+8.) Whale Talk (nested arrays)
 
 
 /* TEMP CALCULATOR - Kelvin/Celsius/Fahrenheit/Newton  */
@@ -164,24 +166,24 @@ if (earlyRegistrant == true && runnerAge > 18) {
   console.log(`Your race number is ${raceNumber}, and your start time is 9:30 am.`, "\n")
 
 // Log race time and numbers for all registrants
-} else if
-(earlyRegistrant !== true && runnerAge > 18) {
+  } else if
+  (earlyRegistrant !== true && runnerAge > 18) {
   console.log(`Your race number is ${raceNumber} and your start time is 11 am.`, "\n")
-}
+  }
 
 if (runnerAge < 18) {
   console.log(`Your race number is ${raceNumber} and your start time 12:30 pm.`, "\n")
-}
+  }
 
-if (runnerAge == 18) {
+  if (runnerAge == 18) {
   console.log(`See registration desk.`, "\n")
-}
+  }
 
 //  ====*** ROCK SCISSORS PAPER GAME featuring cheatcode option
 // first function: handle and return user input
 const getUserChoice = userInput => {
   // handle user input of any case
-  userInput = userInput.toLowerCase();
+    userInput = userInput.toLowerCase();
   // when input matches criteria, return
     if (userInput === "rock" || userInput === "paper" || userInput === "scissors" || userInput ==="bomb") {
           return userInput;
@@ -250,7 +252,7 @@ const getUserChoice = userInput => {
     // after exhausting if statements above, use else to address input outside of game parameters
     else {
       return console.log("You just had one job.","\n","One job and three little old words to choose from: rock, paper, or scissors.", "\n","Try again, genius.", "\n");
-      }
+    }
   }
   
   // fourth function: play game by taking user input and executing sequence of functions above
@@ -303,7 +305,7 @@ const getUserChoice = userInput => {
     //  getSleepHours("friday") +
     //  getSleepHours("saturday") +
     //  getSleepHours("sunday")
-8 + 8 + 4 + 8 + 6 + 6 + 9
+    8 + 8 + 4 + 8 + 6 + 6 + 9
   
   // console.log(getActualSleepHours())
 
@@ -319,17 +321,89 @@ const calculateSleepDebt = () => {
   if (idealSleepHours === actualSleepHours) {
     console.log(`Perfection in your sleep patterns! Your actual and ideal sleep are the same.`)
   }
-else if (idealSleepHours > actualSleepHours) {
+  else if (idealSleepHours > actualSleepHours) {
   let debt = idealSleepHours - actualSleepHours
   console.log(`Get your butt to bed tonight, sleepyhead! You have a sleep debt of ${debt} hour(s).`)
-}
-else {
+  }
+  else {
   let surplus = actualSleepHours - idealSleepHours
   console.log(`Sackhound! You have a sleep surplus of ${surplus} hour(s)`)
-}
+  }
 }
 calculateSleepDebt()
+
+//  ===*** Trainging Day: troubleshooting variable scope issues ***===
+
+const getRandEvent = () => {
+  const random = Math.floor(Math.random() * 3);
+    if (random === 0) {
+      return 'Marathon';
+    } else if (random === 1) {
+      return 'Triathlon';
+    } else if (random === 2) {
+      return 'Pentathlon';
+    }
+  };
   
+  const getTrainingDays = event => {
+    let days = 0;
+    if (event === 'Marathon') {
+      days = 50;
+    } else if (event === 'Triathlon') {
+      days = 100;
+    } else if (event === 'Pentathlon') {
+      days = 200;
+    }
+  
+    return days;
+  };
+  
+  const logEvent = (name, event) => {
+    console.log(`${name}'s event is: ${event}`);
+    };
+  
+  const logTime = (name, days) => {
+  
+    console.log(`${name}'s time to train is: ${days} days`);
+    };
+  
+  const event = getRandEvent();
+  const days = getTrainingDays(event);
+  
+  
+  logEvent(name = "Nala", event);
+  logTime(name = "Nalal", days);
+  
+  const event2 = getRandEvent();
+  const days2 = getTrainingDays(event2);
+  const name2 = 'Warren';
+   
+  logEvent(name2, event2);
+  logTime(name2, days2);
+
+
+  // ===*** Whale Talk - compare strings, extract vowels, double some elements when pushing to new array ***===
+let input = "Would you like to swing on a star"
+const vowels = ["a", "e", "i", "o", "u"]
+
+const resultArr = []
+
+for (i = 0; i < input.length; i++) {
+  for (j = 0; j < vowels.length; j++) {
+    if (input[i] === vowels[j]) {
+    // resultArr.push(input[j])
+    // console.log(vowels[j])
+      if (input[i] === "e") {
+        resultArr.push("ee");
+      } else if (input[i] === "u") {
+      resultArr.push("uu");
+      } else {
+      resultArr.push(vowels[j])
+      }
+    }
+  }
+}
+console.log(resultArr.join('').toUpperCase())
   
 
   
