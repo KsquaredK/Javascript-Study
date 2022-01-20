@@ -1,6 +1,6 @@
 // =====***** Array Methods *****=====
 //  ===*** .length, .pop, .push, .shift, unshift, splice, 
-// .forEach, .map, .filter, .findIndex, .reduce
+// .forEach, .map, .filter, .findIndex, .reduce, .some
 
 let secretMessage = ['Learning', 'is', 'not', 'about', 'what', 'you', 'get', 
 'easily', 'the', 'first', 'time,', 'it', 'is', 'about', 'what', 'you', 'can', 
@@ -164,6 +164,7 @@ const longFavoriteWords = favoriteWords.filter(word => {
 console.log(favoriteWords);
 console.log(longFavoriteWords);
 
+
 // .findIndex
 // finds and returns index of first element that evalauates true to calback function, returns -1 if no elements satisfy condition
 
@@ -216,6 +217,16 @@ The value of currentValue:  7
 
 The array reduces to: 26: 
 */
+
+// .some
+// tests whether at least element passes test of passed in function, returns boolean, non-mutating
+const array = [1, 2, 3, 4, 5];
+
+// checks whether an element is even
+const even = (element) => element % 2 === 0;
+
+console.log(array.some(even));
+// expected output: true
 
 // .some, .filter, .length, .every
 const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
