@@ -1,6 +1,6 @@
 // =====***** Array Methods *****=====
 //  ===*** .length, .pop, .push, .shift, unshift, splice, 
-// .forEach, .map, .filter, .findIndex, .reduce, .some
+// .forEach, .map, .filter, .findIndex, .reduce, .some, .every
 
 let secretMessage = ['Learning', 'is', 'not', 'about', 'what', 'you', 'get', 
 'easily', 'the', 'first', 'time,', 'it', 'is', 'about', 'what', 'you', 'can', 
@@ -227,6 +227,16 @@ const even = (element) => element % 2 === 0;
 
 console.log(array.some(even));
 // expected output: true
+
+
+// .every
+// returns true if all elements evaluates to condition
+const isBelowThreshold = (currentValue) => currentValue < 40;
+const array1 = [1, 30, 39, 29, 10, 13];
+
+console.log(array1.every(isBelowThreshold));
+// expected output: true
+
 
 // .some, .filter, .length, .every
 const words = ['unique', 'uncanny', 'pique', 'oxymoron', 'guise'];
