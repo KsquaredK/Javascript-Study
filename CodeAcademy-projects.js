@@ -8,6 +8,7 @@
 7.) Training Day (troubleshoot scope errors)
 8.) Whale Talk (nested arrays)
 9.) Simple Linting Tool (working with arrays)
+10.) Meal Maker (working with objects)
 
 
 /* TEMP CALCULATOR - Kelvin/Celsius/Fahrenheit/Newton  */
@@ -473,6 +474,99 @@ console.log(betterWords.join(" "))
 
     • Replaced overused words with something else.
 */
+
+/* ===*** MEAL MAKER - getters, setters, factory functions, etc. ***=== */
+const menu = {
+  // object literal defines courses object
+  _courses: {
+    appetizers: [],
+    mains: [],
+    desserts: [],
+  },
+// getter returns all properties of courses obj
+// getters to return specific courses
+  get appetizers() {
+      return this._courses.appetizers;
+    },
+  get mains() {
+      return this._courses.mains;
+    },
+  get desserts() {
+        return this._courses.desserts;
+    },
+// setters to constrain how new data is added to obj
+// setters always take a parameter; here 'data is used for simplicity
+  set appetizers(data) {    
+    this._courses.appetizers = data;    
+  },
+
+  set mains(data) {    
+    this._courses.mains = data;    
+  },
+
+    set desserts(data){    
+    this._courses.desserts = data;    
+  },
+  get courses () {
+    // could use this return statement:
+    // return .courses;
+    // or make use of getters:
+    return {
+      appetizers: this.appetizers,       
+      mains: this.mains, 
+      desserts: this.desserts
+    }
+  },
+// obj method for adding new dish to menu
+  addDishToCourse(courseName, dishName, dishPrice) {
+    const dish = { 
+      name: dishName,
+      price: dishPrice
+  }
+  // append this new object to this course, add to dish array    // 
+  return this._courses[courseName].push(dish);
+  },
+
+  // obj method to get random dish from menu
+  getRandomDishFromCourse(courseName) {
+    // assign array of courses a variable for clarity in following code
+    let dishes = this._courses[courseName]
+  // get random number (limited by # of elements in array)
+    let randomIndex = Math.floor(Math.random() * dishes.length)
+    // use that random number to return an element with the corresponding index
+    return dishes[randomIndex];
+  },
+  
+  generateRandomMeal() {
+    // 'appetizers' string is argument passed in via courseName parameter to access dish array (derived from _courses)
+    const appetizer = this.getRandomDishFromCourse('appetizers');
+    let main = this.getRandomDishFromCourse('mains');
+    let dessert = this.getRandomDishFromCourse('desserts');
+    let totalPrice = appetizer.price + main.price + dessert.price;
+    
+    return `Here's a good-looking meal: ${appetizer.name}, ${main.name}, and ${dessert.name}, all for ${totalPrice}` 
+    }
+};
+// invoke addDishToMenu method to populate dish array 
+  menu.addDishToCourse('appetizers', 'tapenade', 6.99);
+
+  menu.addDishToCourse('appetizers', 'avgolemono soup', 10.99);
+  menu.addDishToCourse('appetizers', 'saganaki', 11.99);
+  menu.addDishToCourse('mains', 'eggplant tower', 12.99);
+  menu.addDishToCourse('mains', 'pastitsio', 14.99);
+  menu.addDishToCourse('mains', 'moussaka', 13.99);
+  menu.addDishToCourse('desserts', 'baklava', 7.99);
+  menu.addDishToCourse('desserts', 'tiramisou', 7.99);
+  menu.addDishToCourse('desserts', 'figs and cheese plate', 7.99);
+
+// map random meal to new variable
+  const meal = menu.generateRandomMeal();
+  console.log(meal, menu.desserts, menu.mains, menu.appetizers)
+
+
+
+
+  
 
 
   
