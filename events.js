@@ -17,7 +17,7 @@ readMore.addEventListener('click', showInfo())
 
 
 
-//using event listeners to hide and display content and change text displayed:
+//Using Event Listeners to hide and display content and change text displayed:
 //  target affordance 1
 let view = document.getElementById('view-button');
 // target affordance 2
@@ -59,7 +59,8 @@ close.addEventListener('click', textReturn);
 
 //note: I didn't get .onclick to work in this context - the innerHTML text changes failed to render
 
-// using .removeEventListener
+
+// Using .removeEventListener
 let fortunes = ["A beautiful, smart, and loving person will be coming into your life.",
   "A fresh start will put you on your way.",
   "A golden egg of opportunity falls into your lap this month.",
@@ -102,7 +103,7 @@ let sharePhoto = function(event) {
 share.addEventListener('click', sharePhoto)
 
 
-
+// Event Types
 // additional events: wheel
 // This variable stores the "Pick a Color" button
 let button = document.getElementById('color-button');
@@ -127,3 +128,69 @@ function colorChange(event){
 button.addEventListener('click', colorChange)
 
 mysteryButton.addEventListener('wheel', colorChange)
+
+
+// Mouse Events
+// These variables store the boxes seen in the browser
+let itemOne = document.getElementById('list-item-one');
+let itemTwo = document.getElementById('list-item-two');
+let itemThree = document.getElementById('list-item-three');
+let itemFour = document.getElementById('list-item-four');
+let itemFive = document.getElementById('list-item-five');
+let resetButton = document.getElementById('reset-button');
+
+// This function programs the "Reset" button to return the boxes to their default styles
+let reset = function() {
+  itemOne.style.width = ''
+  itemTwo .style.backgroundColor = ''
+  itemThree.innerHTML = 'The mouse must leave the box to change the text'
+  itemFive.style.display = "none"
+};
+resetButton.onclick = reset;
+
+// event handler for item1
+const increaseWidth = () => {
+  itemOne.style.width = '763px';
+}
+itemOne.onmouseover = function(event) {      
+  increaseWidth();
+};
+// event handler for item2
+const changeBackground = () => {
+  itemTwo.style.backgroundColor = '#ffffff'
+}
+
+itemTwo.onmouseup = event => {
+  changeBackground()
+}
+// event handler for item3
+const changeText = () => {
+  itemThree.innerHTML = 'The mouse has left the element'
+}
+
+itemThree.onmouseout = e => {
+  changeText()
+}
+// event handler for item4
+const showItem = () => {
+  itemFive.style.display = 'block'
+}
+
+itemFour.onmousedown = e => {
+  showItem()
+}
+
+// Keyboard Events
+// a simple game that bounces a ball by changing CSS properties
+let ball = document.getElementById('float-circle');
+
+const up = e => {
+  ball.style.bottom = '250px'
+}
+
+const down = e => {
+  ball.style.bottom = '50px'
+}
+
+document.addEventListener('keydown', up)
+document.addEventListener('keyup', down)
