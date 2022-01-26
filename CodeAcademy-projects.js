@@ -566,8 +566,10 @@ const menu = {
 
 
 
-  
+
 /* ===*** CHORE DOOR web game */
+// DEBUG: button functionality not working, and isBot() is not triggering end of game
+
 // DEBUG: button functionality not working, and isBot() is not triggering end of game
 
 let doorImage1 = document.getElementById('door1');
@@ -593,7 +595,7 @@ let openDoor1;
 let openDoor2;
 let openDoor3;
 
-const isBot = () => {
+const isBot = (door) => {
   if (door.src === botDoorPath) {
     return true
   } else {
@@ -613,8 +615,8 @@ const playDoor = (door) => {
   numClosedDoors--;
   if (numClosedDoors === 0) {
     gameOver("win");
-  } else if 
-    (isBot(door)) {
+  } else if
+    (numClosedDoors !== 0 && isBot(door)) {
       gameOver('lose')
     }
   } 
@@ -641,7 +643,7 @@ const randomChoreDoorGenerator = () => {
 
 door1.onclick = () => {
   if(currentlyPlaying && !isClicked(door1)) {
-  doorImage1.src = openDoor1
+  door1.src = openDoor1
   playDoor(door1);
     } 
   }
@@ -649,14 +651,14 @@ door1.onclick = () => {
 
 door2.onclick = () => {
   if(currentlyPlaying && !isClicked(door2)) {
-  doorImage2.src = openDoor2
+  door2.src = openDoor2
   playDoor(door2);
   }
 }
 
 door3.onclick = () => {
   if (!isClicked(doorImage3)) {
-    doorImage3.src = openDoor3
+    door3.src = openDoor3
     playDoor(door3);
     } 
   }
